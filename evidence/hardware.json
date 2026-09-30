@@ -1,0 +1,28 @@
+{
+  "model": "Nitro AN515-45",
+  "bios": "V1.11",
+  "running_kernel": "7.2.6-1-cachyos",
+  "running_kernel_headers": false,
+  "installed_module_trees": [
+    "6.18.52-1-cachyos-lts",
+    "7.2.8-1-cachyos"
+  ],
+  "acer_wmi_nodes": [
+    "driver",
+    "driver_override",
+    "modalias",
+    "power",
+    "rfkill",
+    "subsystem",
+    "uevent"
+  ],
+  "charge_threshold_paths": [],
+  "leds": [
+    "enp3s0-0::lan",
+    "enp3s0-1::lan",
+    "enp3s0-2::lan",
+    "input4::capslock",
+    "input4::numlock",
+    "input4::scrolllock"
+  ]
+}

@@ -1,0 +1,21 @@
+make: Entering directory '/usr/lib/modules/7.2.8-1-cachyos/build'
+make[1]: Entering directory '/home/abhijithms/Documents/Codex/2026-09-30/acer-nitro-cachyos/work/patched-driver'
+  CC [M]  src/linuwu_sense.o
+src/linuwu_sense.c:4715:9: warning: use of bitwise '&' with boolean operands [-Wbitwise-instead-of-logical]
+ 4715 |     if (has_cap(ACER_CAP_PREDATOR_SENSE) & !has_cap(ACER_CAP_NITRO_SENSE_V4))
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                          &&
+src/linuwu_sense.c:4715:9: note: cast one or both operands to int to silence this warning
+src/linuwu_sense.c:4720:9: warning: use of bitwise '&' with boolean operands [-Wbitwise-instead-of-logical]
+ 4720 |     if (has_cap(ACER_CAP_PREDATOR_SENSE) & has_cap(ACER_CAP_NITRO_SENSE_V4))
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                          &&
+src/linuwu_sense.c:4720:9: note: cast one or both operands to int to silence this warning
+2 warnings generated.
+  MODPOST Module.symvers
+  CC [M]  src/linuwu_sense.mod.o
+  CC [M]  .module-common.o
+  LD [M]  src/linuwu_sense.ko
+  BTF [M] src/linuwu_sense.ko
+make[1]: Leaving directory '/home/abhijithms/Documents/Codex/2026-09-30/acer-nitro-cachyos/work/patched-driver'
+make: Leaving directory '/usr/lib/modules/7.2.8-1-cachyos/build'

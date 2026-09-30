@@ -1,0 +1,6 @@
+{
+  "nitro_sense/fan_speed": "0,0",
+  "nitro_sense/battery_limiter": "1",
+  "four_zoned_kb/per_zone_mode": "00ff2f,5c9d68,ff006f,fff700,77",
+  "four_zoned_kb/four_zone_mode": "3,4,77,1,255,0,208"
+}

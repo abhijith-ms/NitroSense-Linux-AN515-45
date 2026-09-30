@@ -1,0 +1,2 @@
+linuwu-sense-an51545/0.2.0.r1, 6.18.52-1-cachyos-lts, x86_64: installed
+linuwu-sense-an51545/0.2.0.r1, 7.2.8-1-cachyos, x86_64: installed

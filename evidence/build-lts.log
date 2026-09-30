@@ -1,0 +1,10 @@
+make: Entering directory '/usr/lib/modules/6.18.52-1-cachyos-lts/build'
+make[1]: Entering directory '/home/abhijithms/Documents/Codex/2026-09-30/acer-nitro-cachyos/work/patched-driver-lts'
+  CC [M]  src/linuwu_sense.o
+  MODPOST Module.symvers
+  CC [M]  src/linuwu_sense.mod.o
+  CC [M]  .module-common.o
+  LD [M]  src/linuwu_sense.ko
+  BTF [M] src/linuwu_sense.ko
+make[1]: Leaving directory '/home/abhijithms/Documents/Codex/2026-09-30/acer-nitro-cachyos/work/patched-driver-lts'
+make: Leaving directory '/usr/lib/modules/6.18.52-1-cachyos-lts/build'

@@ -1,0 +1,14 @@
+work/
+*.ko
+*.o
+*.pkg.tar.*
+__pycache__/
+src/
+pkg/
+
+app/node_modules/
+app/dist/
+app/dist-electron/
+app/release/
+
+packaging/linuwu-sense-an51545-dkms/driver/

@@ -1,0 +1,18 @@
+{
+  "nitrosense": {
+    "url": "https://github.com/MeetSolanki530/NitroSense-Linux-AN515-45",
+    "commit": "7c7bd766598614bf973293993201834170af4c0d"
+  },
+  "linuwu": {
+    "url": "https://github.com/0x7375646F/Linuwu-Sense",
+    "commit": "73a25ec243a44ba2b1703e8d0a76fa2735062506"
+  },
+  "div-linuwu": {
+    "url": "https://github.com/PXDiv/Div-Linuwu-Sense",
+    "commit": "d8ea437d847268dd9fe2a49ae28d0723dd720968"
+  },
+  "opensense": {
+    "url": "https://github.com/archivesteak/opensense",
+    "commit": "d42ec7b8fc6462913715f390f0f624b15a1426e9"
+  }
+}
