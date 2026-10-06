@@ -1,0 +1,75 @@
+--- a/src/linuwu_sense.c
++++ b/src/linuwu_sense.c
+@@ -4602,6 +4602,53 @@ static int four_zone_kb_state_load(void)
+     return 0;
+ }
+ 
++/* Expose the RGB panel's intensity through the standard LED class so desktop
++ * environments and brightnessctl can control it. Preserve the active effect
++ * or per-zone colours; only the intensity is changed. */
++static enum led_brightness four_zone_kb_brightness_get(struct led_classdev *led)
++{
++    struct get_four_zoned_kb_output output;
++
++    if (ACPI_FAILURE(get_kb_status(&output)))
++        return LED_OFF;
++
++    return min_t(u8, output.gmOutput[2], led->max_brightness);
++}
++
++static int four_zone_kb_brightness_set(struct led_classdev *led,
++                                       enum led_brightness brightness)
++{
++    struct get_four_zoned_kb_output output;
++    struct per_zone_color zones;
++    acpi_status status;
++
++    if (current_kb_state.per_zone) {
++        status = get_per_zone_color(&zones);
++        if (ACPI_FAILURE(status))
++            return -EIO;
++        zones.brightness = brightness;
++        status = set_per_zone_color(&zones);
++    } else {
++        status = get_kb_status(&output);
++        if (ACPI_FAILURE(status))
++            return -EIO;
++        enable_four_zone_kb();
++        status = set_kb_status(output.gmOutput[0], output.gmOutput[1],
++                               brightness, output.gmOutput[4],
++                               output.gmOutput[5], output.gmOutput[6],
++                               output.gmOutput[7]);
++    }
++
++    return ACPI_FAILURE(status) ? -EIO : 0;
++}
++
++static struct led_classdev four_zone_kb_led = {
++    .name = "acer::kbd_backlight",
++    .max_brightness = 100,
++    .brightness_get = four_zone_kb_brightness_get,
++    .brightness_set_blocking = four_zone_kb_brightness_set,
++};
++
+ /* Four Zoned Keyboard Attributes */
+ static struct device_attribute four_zoned_rgb_mode = __ATTR(four_zone_mode, 0644, four_zoned_rgb_kb_show, four_zoned_rgb_kb_store);
+ static struct device_attribute per_zoned_rgb_mode = __ATTR(per_zone_mode, 0644, per_zoned_rgb_kb_show, per_zoned_rgb_kb_store);
+@@ -4682,6 +4729,9 @@ static int acer_platform_probe(struct platform_device *device)
+         err = sysfs_create_group(&device->dev.kobj, &four_zoned_kb_attr_group);
+         if (err)
+             goto error_four_zone;
++        err = devm_led_classdev_register(&device->dev, &four_zone_kb_led);
++        if (err)
++            goto error_four_zone_led;
+         four_zone_kb_state_load();
+      }
+ 
+@@ -4696,6 +4746,8 @@ error_rfkill:
+ error_brightness:
+     if (has_cap(ACER_CAP_MAILLED))
+         acer_led_exit();
++error_four_zone_led:
++    sysfs_remove_group(&device->dev.kobj, &four_zoned_kb_attr_group);
+ error_four_zone:
+     return err;
+ error_nitro_sense:

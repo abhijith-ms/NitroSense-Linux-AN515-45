@@ -15,6 +15,7 @@ source=("driver::git+https://github.com/PXDiv/Div-Linuwu-Sense#commit=d8ea437d84
   'linuwu-sense-an515-45-rgb.patch'
   'linuwu-sense-misc-setting-status.patch'
   'linuwu-sense-backlight-timeout-decode.patch'
+  'linuwu-sense-kbd-backlight-led.patch'
   'kernel-string-copy.patch'
   'dkms.conf'
   'build-module.sh'
@@ -23,13 +24,14 @@ sha256sums=('SKIP'
   '2d39595468f24a1b4d659cf82657e1d81ccacaf07e18de98f87e5b66d9ee53ff'
   '547a9e090b3e025511fcf1f63cff57d3b5f1b7e3a57b6a242eda5e16e88e4d16'
   '20111bfcd2a7d95d81044d80d2c32185325ee813a64817c03954b3bf1a76c70c'
+  '7b18718bfe6b24d80db00332ed80d56872dd54fda62bd519901d576e8d05ce7e'
   '6d2459384afec452dd612653d2f52f177bff08bff41b638025c1a5cd980774e2'
   '0ec5333310e93da5303adf572735a7e00d3394d4e112a81fba780f83875ab9cf'
   'c489f1be4c4ed84eeabd4ddc3be333060c2f2a2f89d7635ef3c4430239d536d6'
 )
 prepare() {
   cd "$srcdir/driver"
-  for patch in linuwu-sense-an515-45-rgb.patch linuwu-sense-misc-setting-status.patch linuwu-sense-backlight-timeout-decode.patch kernel-string-copy.patch; do
+  for patch in linuwu-sense-an515-45-rgb.patch linuwu-sense-misc-setting-status.patch linuwu-sense-backlight-timeout-decode.patch linuwu-sense-kbd-backlight-led.patch kernel-string-copy.patch; do
     git apply "$srcdir/$patch"
   done
 }
